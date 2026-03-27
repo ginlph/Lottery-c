@@ -17,7 +17,12 @@ import { adminMiddleware } from '../middlewares/admin';
 import { authTokenMiddleware } from '../middlewares/auth-token';
 import { validateBody } from '../middlewares/validate';
 import type { RouteDefinition } from '../types';
-import { passThroughObject, validateRequestIdPayload, validateVerifyOrderPayload } from '../../validators';
+import {
+  passThroughObject,
+  validateRefreshTokenPayload,
+  validateRequestIdPayload,
+  validateVerifyOrderPayload
+} from '../../validators';
 
 export const routes: RouteDefinition[] = [
   {
@@ -29,7 +34,7 @@ export const routes: RouteDefinition[] = [
   {
     method: 'POST',
     path: '/api/auth/refresh-token',
-    middlewares: [validateBody(passThroughObject)],
+    middlewares: [validateBody(validateRefreshTokenPayload)],
     handler: refreshTokenController
   },
   {

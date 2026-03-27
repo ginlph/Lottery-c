@@ -15,6 +15,11 @@ export interface RequestContext {
   context: CloudbaseContext;
   traceId: string;
   body: unknown;
+  auth?: {
+    activity_id: string;
+    user_key: string;
+    auth_token: string;
+  };
 }
 
 export type Middleware = (ctx: RequestContext, next: () => Promise<void>) => Promise<void>;

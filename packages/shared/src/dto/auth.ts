@@ -26,6 +26,12 @@ export interface VerifyOrderResponse {
   auth_token: string;
   /** 令牌过期时间（ISO 8601） */
   token_expire_at: string;
+  /** 总抽奖次数 */
+  total_chances: number;
+  /** 已使用次数 */
+  used_chances: number;
+  /** 剩余次数 */
+  remaining_chances: number;
 }
 
 /**
