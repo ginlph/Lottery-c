@@ -35,3 +35,14 @@ export function validateRequestIdPayload(payload: unknown) {
 export function passThroughObject(payload: unknown) {
   return ensureObject(payload);
 }
+
+export function validateRefreshTokenPayload(payload: unknown) {
+  const body = ensureObject(payload);
+  if (!body.activity_id || !body.user_key || !body.auth_token) {
+    throw new AppError(
+      ERROR_CODES.BAD_REQUEST,
+      'activity_id, user_key and auth_token are required for refresh-token'
+    );
+  }
+  return body;
+}
